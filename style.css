@@ -1,0 +1,329 @@
+/* General Reset and Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #EAEAEA; /* Lighter background to make the article stand out */
+    color: #333;
+}
+
+/* Header and Navigation */
+header {
+    background-color: #1F2A38;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+/* Animation for Navigation Links */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    bottom: -5px;
+    left: 0;
+    transition: transform 0.3s ease;
+    transform: scaleX(0);
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+nav ul li a:hover {
+    color: #FF6F61; /* Change color on hover */
+}
+
+/* Search Bar */
+.search-bar {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    background-color: #00B4D8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #0083A0;
+}
+
+/* Main Content and Articles */
+main {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Article Card with Animation */
+.article {
+    background-color: #FFFFFF;
+    border: 1px solid #ddd;
+    margin: 15px;
+    padding: 15px;
+    width: calc(33% - 40px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    animation-delay: calc(0.1s * var(--index));
+}
+
+.article:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.article h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.article p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Detail Article Container */
+.article-container {
+    max-width: 800px;
+    margin: 50px auto; /* Center the box with some margin */
+    background-color: #FFFFFF; /* Light background for paper-like look */
+    padding: 25px; /* Padding inside the box */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for a card-like effect */
+    border: 1px solid #ddd; /* Subtle border */
+    font-family: 'Times New Roman', Times, serif; /* Font family for a more traditional look */
+}
+
+.article-content-container {
+    margin-bottom: 20px;
+}
+
+.article-content {
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: justify;
+    /* column-count: 2; /* Hapus atau komentar bagian ini */
+    column-gap: 30px; /* Tetap bisa dipertahankan atau dihapus jika tidak diperlukan */
+}
+
+.article-category {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.article-container h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-align: center; /* Center the title */
+    color: #333;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ddd; /* Underline for the title */
+    padding-bottom: 10px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FFC107;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #CC9A06;
+}
+
+/* Article Detail Formatting */
+.article-detail p,
+.article-detail ul,
+.article-detail ol {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.article-detail ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.article-detail ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.article-detail li {
+    margin-bottom: 10px;
+}
+
+/* Keyframes for fade-in and slide-up animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Slide from below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* At final position */
+    }
+}
+
+.article {
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp 0.6s forwards; /* Apply the animation */
+    animation-delay: calc(0.1s * var(--index)); /* Staggered delay based on index */
+    transition: transform 0.3s ease-in-out;
+}
+
+.article:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+/* Tambahkan media query untuk layar dengan lebar maksimal 768px */
+@media (max-width: 768px) {
+    /* Ubah tata letak header dan navigasi */
+    header {
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    /* Sesuaikan lebar artikel di halaman utama */
+    main {
+        width: 90%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .article {
+        width: calc(100% - 30px); /* Lebar penuh minus margin */
+        margin: 10px 0;
+    }
+
+    /* Sesuaikan padding dan ukuran font artikel detail */
+    .article-container {
+        width: 95%;
+        padding: 20px;
+        margin: 20px auto;
+        font-size: 16px;
+    }
+
+    .article-container h2 {
+        font-size: 24px;
+    }
+
+    .article-content {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .back-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    /* Sesuaikan tampilan kotak pencarian */
+    .search-bar input[type="text"] {
+        width: 80%;
+    }
+
+    .search-bar button {
+        margin-top: 10px;
+        width: 80%;
+    }
+
+    /* Sesuaikan tampilan kategori */
+    .article-category {
+        font-size: 12px;
+    }
+}
+
+/* Pastikan pagination berada di bawah */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 30px; /* Tambahkan margin bawah untuk memberi jarak */
+    position: relative; /* Pastikan relative untuk kontrol posisi */
+    width: 100%; /* Buat pagination mengambil lebar penuh */
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    background-color: #00B4D8;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #0083A0;
+}
+
+.pagination a.active {
+    background-color: #FF6F61;
+}
+
